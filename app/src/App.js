@@ -16,10 +16,6 @@ constructor(){
 }
   
 
-  componentDidMount(){
-   
-  }
-
   handleChange(val){
     this.setState({userInput: val})
   }
@@ -52,10 +48,10 @@ getPotterData(prop){
           <h2>Welcome to React</h2>
         </div>
         <input type="text" onChange={ (e)=>this.handleChange(e.target.value)}></input>
-        <button onClick = {() => this.getPotterData(this.state.userInput)}>Click here</button>
+        <button type="button" className="btn btn-danger" onClick = {() => this.getPotterData(this.state.userInput)}>Click here</button>
         <p>{this.state.name}</p>
         <p>{this.state.house}</p>
-        
+        <img src = {this.state.image}></img>        
       </div>
     );
   }
