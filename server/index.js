@@ -1,16 +1,16 @@
 var express = require('express')
 var bodyParser = require('body-parser')
 var cors  = require('cors')
+var messagesController = require('./controllers/messages_controller.js')
 
 var app = express()
 
 app.use(cors())
+app.use(bodyParser.json());
 
-var array = ['string1', 'string12']
 
-app.get('/api/array', function(request, response){
-    response.json(array)
-})
+
+app.post('/api/create',messagesController.create)
 
 app.listen(3006, function(){
     console.log('working on 3006')

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import axios from 'axios'
+import Team from './components/team.js';
 
 class App extends Component {
 constructor(){
@@ -10,9 +10,12 @@ constructor(){
     name: '',
     house: '',
     image: '',
-    userInput: ''
+    userInput: '',
+    team: []
 
   }
+  this.getPotterData = this.getPotterData.bind(this);
+  this.addToTeam = this.addToTeam.bind(this);
 }
   
 
@@ -35,6 +38,19 @@ getPotterData(prop){
     }
     
     })
+
+}
+
+addToTeam(){
+  let teamMember = {
+    name: this.state.name,
+    house: this.state.house,
+    image: this.state.image}
+  axios.post('http://localhost:3006/api/create', teamMember).then((response) => {
+    this.setState({
+      team: response.data
+    });
+  })
 }
 
   
@@ -43,15 +59,22 @@ getPotterData(prop){
 
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+        <div className="App-header" >
+      
         </div>
-        <input type="text" onChange={ (e)=>this.handleChange(e.target.value)}></input>
+        <div>
+        <input type="text" className="form-control" placeholder="Search for..." type="text" onChange={ (e)=>this.handleChange(e.target.value)}></input>
         <button type="button" className="btn btn-danger" onClick = {() => this.getPotterData(this.state.userInput)}>Click here</button>
-        <p>{this.state.name}</p>
-        <p>{this.state.house}</p>
-        <img src = {this.state.image}></img>        
+        </div>
+        
+        <div className='results'>
+          <p className = 'p1'>You've chosen: {this.state.name}</p>
+          <p className= 'p2'>House: {this.state.house}</p>
+          <img src = {this.state.image} ></img> 
+        </div>
+        <button type="button" className="btn btn-danger" onClick = {() => {this.addToTeam()}}>Add to team</button> 
+        < Team
+        team={this.state.team}/>      
       </div>
     );
   }

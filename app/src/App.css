@@ -2,23 +2,43 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
+
 
 .App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+background: url('logo.png') no-repeat ;; 
+width:100%;
+  padding-bottom: 10px;
+  background-position: center;
+  background-size: contain;
+ 
+ height:300px;
+ 
 }
 
-.App-intro {
-  font-size: large;
+.results{
+  display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+img {
+width: 200px;
+height: 200px;
+padding-bottom: 20px;
 }
+
+
+p {
+ width: 600px;
+ padding: 10px;
+ font-family: 'Hammersmith One', sans-serif;
+ font-size: 40px;
+}
+
+
+
+
+
